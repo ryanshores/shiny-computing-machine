@@ -1,25 +1,25 @@
 # Install the base requirements for the app.
 # This stage is to support development.
 FROM python:alpine AS base
-WORKDIR /app
+WORKDIR /www
 COPY requirements.txt .
 RUN pip install -r requirements.txt
 
-# Run tests to validate app
-FROM node:12-alpine AS app-base
+# Run tests to validate www
+FROM node:12-alpine AS www-base
 RUN apk add --no-cache python g++ make
-WORKDIR /app
-COPY app/package.json app/yarn.lock ./
+WORKDIR /www
+COPY www/package.json www/yarn.lock ./
 RUN yarn install
-COPY app/spec ./spec
-COPY app/src ./src
+COPY www/spec ./spec
+COPY www/src ./src
 RUN yarn test
 
 # Clear out the node_modules and create the zip
-FROM app-base AS app-zip-creator
+FROM www-base AS www-zip-creator
 RUN rm -rf node_modules && \
     apk add zip && \
-    zip -r /app.zip /app
+    zip -r /www.zip /www
 
 # Dev-ready container - actual files will be mounted in
 FROM base AS dev
@@ -33,5 +33,5 @@ RUN mkdocs build
 # Extract the static content from the build
 # and use a nginx image to serve the content
 FROM nginx:alpine
-COPY --from=app-zip-creator /app.zip /usr/share/nginx/html/assets/app.zip
+COPY --from=www-zip-creator /www.zip /usr/share/nginx/html/assets/www.zip
 COPY --from=build /app/site /usr/share/nginx/html
