@@ -1,12 +1,14 @@
 {
-  "name": "101-app",
+  "name": "pi.services",
   "version": "1.0.0",
   "main": "index.js",
   "license": "MIT",
   "scripts": {
     "prettify": "prettier -l --write \"**/*.js\"",
     "test": "jest",
-    "dev": "nodemon src/index.js"
+    "dev": "nodemon src/index.js",
+    "d:build": "docker build -t pi:services .",
+    "d:run": "docker run -dp 3000:3000 pi:services"
   },
   "dependencies": {
     "body-parser": "^1.19.0",
