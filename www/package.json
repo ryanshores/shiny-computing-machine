@@ -1,5 +1,5 @@
 {
-  "name": "pi.services",
+  "name": "www",
   "version": "1.0.0",
   "main": "index.js",
   "license": "MIT",
@@ -7,8 +7,9 @@
     "prettify": "prettier -l --write \"**/*.js\"",
     "test": "jest",
     "dev": "nodemon src/index.js",
-    "d:build": "docker build -t pi:services .",
-    "d:run": "docker run -dp 3000:3000 pi:services"
+    "d:build": "docker build -t www .",
+    "d:run": "docker run -dp 3000:3000 -v www:/etc/www www",
+    "d:dev": "docker run -dp 3000:3000 -w /www -v $(pwd):/www node:12-alpine sh -c \"yarn install && yarn run dev\""
   },
   "dependencies": {
     "body-parser": "^1.19.0",

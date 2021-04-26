@@ -2,12 +2,30 @@ function App() {
     const { Container, Row, Col } = ReactBootstrap;
     return (
         <Container>
+            <Hero />
             <Row>
                 <Col md={{ offset: 3, span: 6 }}>
                     <TodoListCard />
                 </Col>
             </Row>
         </Container>
+    );
+}
+
+function Hero() {
+    const { Jumbotron, Button } = ReactBootstrap;
+
+    return (
+        <Jumbotron>
+            <h1>Hello, world!</h1>
+            <p>
+                This is a simple hero unit, a simple jumbotron-style component for calling
+                extra attention to featured content or information.
+            </p>
+            <p>
+                <Button variant="primary">Learn more</Button>
+            </p>
+        </Jumbotron>
     );
 }
 
