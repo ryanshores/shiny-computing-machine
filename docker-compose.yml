@@ -1,12 +1,12 @@
 version: "3.7"
 
 services:
-  docs:
+  www:
     build:
       context: .
-      dockerfile: Dockerfile
+      dockerfile: ./www/Dockerfile
       target: dev
     ports:
       - 8000:8000
     volumes:
-      - ./:/app
+      - ./:/www
