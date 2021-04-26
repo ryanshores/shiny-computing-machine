@@ -30,3 +30,11 @@ docker-compose up
 ## Contributing
 
 If you find typos or other issues with the machine, feel free to create a PR and suggest fixes!
+
+### Values
+www: node/react server
+scm: 
+ - shiny computing machine
+ - database name
+scmnet: network name
+mysql: database
