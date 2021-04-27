@@ -14,31 +14,31 @@ services:
       MYSQL_PASSWORD: ${MYSQL_PASSWORD}
       MYSQL_DB: ${MYSQL_DB}
   mysql:
-  container_name: mysql
-  build: mysql
-  volumes: 
-    - mysql:/var/lib/mysql
-  environment: 
-    MYSQL_ROOT_PASSWORD: ${MYSQL_PASSWORD}
-    MYSQL_DATABASE: ${MYSQL_DB}
-  pihole:
-    container_name: pihole
-    image: pihole/pihole:latest
-    ports:
-      - "53:53/tcp"
-      - "53:53/udp"
-      - "67:67/udp"
-      - "80:80/tcp"
-    environment:
-      TZ: 'America/Chicago'
-      WEBPASSWORD: ${PI_HOLE_PASSWORD}
-      PIHOLE_DNS: 1.1.1.1;1.0.0.1
-    volumes:
-      - pihole:/etc/pihole/
-      - pihole:/etc/dnsmasq.d/
-    cap_add:
-      - NET_ADMIN
-    restart: unless-stopped
+    container_name: mysql
+    build: mysql
+    volumes: 
+      - mysql:/var/lib/mysql
+    environment: 
+      MYSQL_ROOT_PASSWORD: ${MYSQL_PASSWORD}
+      MYSQL_DATABASE: ${MYSQL_DB}
+  # pihole:
+  #   container_name: pihole
+  #   image: pihole/pihole:latest
+  #   ports:
+  #     - "53:53/tcp"
+  #     - "53:53/udp"
+  #     - "67:67/udp"
+  #     - "80:80/tcp"
+  #   environment:
+  #     TZ: 'America/Chicago'
+  #     WEBPASSWORD: ${PI_HOLE_PASSWORD}
+  #     PIHOLE_DNS: 1.1.1.1;1.0.0.1
+  #   volumes:
+  #     - pihole:/etc/pihole/
+  #     - pihole:/etc/dnsmasq.d/
+  #   cap_add:
+  #     - NET_ADMIN
+  #   restart: unless-stopped
 volumes:
   mysql:
   pihole:
