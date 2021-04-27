@@ -3,11 +3,9 @@ version: "3.7"
 services:
   www:
     container_name: www
-    image: node:12-alpine
-    command: sh -c "yarn install && yarn run dev"
+    build: www
     ports:
       - 3000:3000
-    working_dir: /www
     volumes:
       - ./:/www
     environment:
@@ -17,7 +15,7 @@ services:
       MYSQL_DB: ${MYSQL_DB}
   mysql:
     container_name: mysql
-    image: mysql:5.7
+    build: mysql
     volumes: 
       - mysql:/var/lib/mysql
     environment: 
