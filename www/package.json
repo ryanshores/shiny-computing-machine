@@ -1,18 +1,12 @@
 {
   "name": "www",
-  "version": "1.0.0",
+  "version": "1.0.0.1",
   "main": "index.js",
   "license": "MIT",
   "scripts": {
     "prettify": "prettier -l --write \"**/*.js\"",
     "test": "jest",
-    "dev": "nodemon src/index.js",
-    "up": "docker compose up -d",
-    "down": "docker compose down",
-
-    "d:build": "docker build -t www .",
-    "d:run": "docker run -dp 3000:3000 -v www:/etc/www www",
-    "d:dev": "docker run -dp 3000:3000 -w /www -v $(pwd):/www --network scmnet node:12-alpine sh -c \"yarn install && yarn run dev\"" 
+    "dev": "nodemon src/index.js"
   },
   "dependencies": {
     "body-parser": "^1.19.0",

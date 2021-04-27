@@ -3,24 +3,24 @@ version: "3.7"
 services:
   www:
     container_name: www
-    build: www
+    build: www/
     ports:
       - 3000:3000
     volumes:
-      - ./:/www
+      - ./www:/www
     environment:
       MYSQL_HOST: ${MYSQL_HOST}
       MYSQL_USER: ${MYSQL_USER}
       MYSQL_PASSWORD: ${MYSQL_PASSWORD}
       MYSQL_DB: ${MYSQL_DB}
   mysql:
-    container_name: mysql
-    build: mysql
-    volumes: 
-      - mysql:/var/lib/mysql
-    environment: 
-      MYSQL_ROOT_PASSWORD: ${MYSQL_PASSWORD}
-      MYSQL_DATABASE: ${MYSQL_DB}
+  container_name: mysql
+  build: mysql
+  volumes: 
+    - mysql:/var/lib/mysql
+  environment: 
+    MYSQL_ROOT_PASSWORD: ${MYSQL_PASSWORD}
+    MYSQL_DATABASE: ${MYSQL_DB}
   pihole:
     container_name: pihole
     image: pihole/pihole:latest
