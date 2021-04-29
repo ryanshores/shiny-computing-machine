@@ -38,3 +38,18 @@ scm:
  - database name
 scmnet: network name
 mysql: database
+
+## Services
+Here is the list of all services included in this project.
+
+### Pihole
+Pihole is a DNS proxy that serves to block ips that show up on ad blocking lists.
+
+##### Ports used
+* 53/tcp
+* 53/udp
+* 67/udp
+* 80/tcp
+
+#### Config settings
+PI_HOLE_PASSWORD - password for admin panel
