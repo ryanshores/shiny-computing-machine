@@ -12,6 +12,7 @@ services:
     environment:
       TZ: 'America/Chicago'
       WEBPASSWORD: ${PI_HOLE_PASSWORD}
+      PIHOLE_DNS_: 1.1.1.1;1.0.0.1
     volumes:
       - 'etc-pihole:/etc/pihole/'
       - 'etc-dnsmasq.d:/etc/dnsmasq.d/'
