@@ -27,6 +27,9 @@ services:
       PGDATA: ${PGSQL_DATA}
     ports:
       - 5432:5432
+    volumes:
+      - pgdata:${PGSQL_DATA}
 volumes: 
   etc-pihole:
   etc-dnsmasq.d:
+  pgdata:
