@@ -24,6 +24,7 @@ services:
     restart: always
     environment:
       POSTGRES_PASSWORD: ${PGSQL_ROOT_PASSWORD}
+      PGDATA: ${PGSQL_DATA}
     ports:
       - 5432:5432
 volumes: 
