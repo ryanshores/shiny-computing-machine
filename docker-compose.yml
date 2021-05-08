@@ -33,3 +33,6 @@ volumes:
   etc-pihole:
   etc-dnsmasq.d:
   pgdata:
+  nginx:
+  letsencrypt:
+  mysql:
