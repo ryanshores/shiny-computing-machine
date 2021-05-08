@@ -1,6 +1,15 @@
 version: "3.7"
 
 services:
+  homeassistant:
+    container_name: homeassistant
+    image: homeassistant/raspberrypi4-homeassistant:stable
+    volumes:
+      - ha-config:/config
+      - localtime:/etc/localtime:ro
+    restart: unless-stopped
+    ports:
+      - 8123:8123
   pihole:
     container_name: pihole
     image: pihole/pihole:latest
@@ -33,6 +42,5 @@ volumes:
   etc-pihole:
   etc-dnsmasq.d:
   pgdata:
-  nginx:
-  letsencrypt:
-  mysql:
+  ha-config:
+  localtime:
