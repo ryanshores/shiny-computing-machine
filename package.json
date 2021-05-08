@@ -7,9 +7,10 @@
   "license": "MIT",
   "scripts": {
     "build": "docker-compose build",
-    "dev": "docker-compose up",
-    "up": "docker-compose up -d",
+    "dev": "yarn build && docker-compose up",
+    "up": "yarn build && docker-compose up -d",
     "down": "docker-compose down",
-    "clean": "docker-compose down -v"
+    "clean": "docker-compose down -v",
+    "prebuild": "./pihole/network/build-network.sh"
   }
 }
