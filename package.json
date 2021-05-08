@@ -6,11 +6,10 @@
   "author": "Ryan Shores <ryan.shores@me.com>",
   "license": "MIT",
   "scripts": {
-    "build": "docker-compose build",
     "dev": "docker-compose up",
     "up": "docker-compose up -d",
     "down": "docker-compose down",
-    "clean": "docker-compose down -v",
-    "prebuild": "./pihole/network/build-network.sh"
+    "clean": "docker-compose down -v --remove-orphans",
+    "postclean": "docker volume prune"
   }
 }

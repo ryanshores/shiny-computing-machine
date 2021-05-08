@@ -1,15 +1,6 @@
 version: "3.7"
 
 services:
-  homeassistant:
-    container_name: homeassistant
-    image: homeassistant/raspberrypi4-homeassistant:stable
-    volumes:
-      - ha-config:/config
-      - localtime:/etc/localtime:ro
-    restart: unless-stopped
-    ports:
-      - 8123:8123
   pihole:
     container_name: pihole
     image: pihole/pihole:latest
@@ -28,19 +19,6 @@ services:
     cap_add:
       - NET_ADMIN
     restart: unless-stopped
-  postgres:
-    image: postgres
-    restart: always
-    environment:
-      POSTGRES_PASSWORD: ${PGSQL_ROOT_PASSWORD}
-      PGDATA: ${PGSQL_DATA}
-    ports:
-      - 5432:5432
-    volumes:
-      - pgdata:${PGSQL_DATA}
 volumes: 
   etc-pihole:
   etc-dnsmasq.d:
-  pgdata:
-  ha-config:
-  localtime:
